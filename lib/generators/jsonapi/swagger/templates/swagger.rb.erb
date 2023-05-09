@@ -14,6 +14,7 @@ RSpec.describe '<%= resouces_name %>', type: :request do
     get '<%= route_resouces %> <%= t(:list) %>' do
       tags '<%= route_resouces %>'
       produces 'application/vnd.api+json'
+      operationId 'list<%= model_name.pluralize.camelize %>'
       parameter name: :'page[number]', in: :query, type: :string, description: '<%= t(:page_num) %>', required: false
 <% if sortable_fields.present? -%>
       parameter name: :'sort', in: :query, type: :string, description: '<%= sortable_fields_desc %>', required: false
@@ -107,6 +108,7 @@ RSpec.describe '<%= resouces_name %>', type: :request do
     get '<%= route_resouces %> <%= t(:detail) %>' do
       tags '<%= route_resouces %>'
       produces 'application/vnd.api+json'
+      operationId 'get<%= model_name.camelize %>'
       parameter name: :id, in: :path, type: :integer, description: 'ID', required: true
 <% if relationships.present? -%>
       parameter name: :include, in: :query, type: :string, description: '<%= t(:include_related_data) %>', required: false
@@ -179,6 +181,7 @@ RSpec.describe '<%= resouces_name %>', type: :request do
       tags '<%= route_resouces %>'
       consumes 'application/vnd.api+json'
       produces 'application/vnd.api+json'
+      operationId 'create<%= model_name.camelize %>'
       parameter name: :data,
                 in: :body,
                 type: :object,
@@ -300,6 +303,7 @@ path '/<%= route_resouces %>/{id}' do
       tags '<%= route_resouces %>'
       consumes 'application/vnd.api+json'
       produces 'application/vnd.api+json'
+      operationId 'update<%= model_name.camelize %>'
       parameter name: :id, in: :path, type: :integer, description: 'ID', required: true
       parameter name: :data,
                 in: :body,
@@ -423,6 +427,7 @@ path '/<%= route_resouces %>/{id}' do
     delete '<%= route_resouces %> <%= t(:delete) %>' do
       tags '<%= route_resouces %>'
       produces 'application/vnd.api+json'
+      operationId 'delete<%= model_name.camelize %>'
       parameter name: :id, in: :path, type: :integer, description: 'ID', required: true
 
       response '204', '<%= t(:delete) %>' do
