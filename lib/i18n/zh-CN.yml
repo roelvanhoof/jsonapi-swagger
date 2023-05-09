@@ -23,7 +23,7 @@ zh-CN:
     last_page_link: '最后一页链接'
     page_links: '分页链接'
     detail: '详情'
-    get_dtail: '获取详情'
+    get_detail: '获取详情'
     detail_link: '详情链接'
     create: '创建'
     patch: '更新'
