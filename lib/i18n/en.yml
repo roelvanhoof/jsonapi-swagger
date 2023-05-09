@@ -23,7 +23,7 @@ en:
     last_page_link: 'Last Page'
     page_links: 'Page Link'
     detail: 'Detail'
-    get_dtail: 'Fetch Detail'
+    get_detail: 'Fetch Detail'
     detail_link: 'Detail Link'
     create: 'Create'
     patch: 'Patch'
