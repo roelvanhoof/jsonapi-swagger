@@ -16,6 +16,7 @@ RSpec.describe '<%= resouces_name %>', type: :request do
       produces 'application/vnd.api+json'
       operationId 'list<%= model_name.pluralize.camelize %>'
       parameter name: :'page[number]', in: :query, type: :string, description: '<%= t(:page_num) %>', required: false
+      parameter name: :'page[size]', in: :query, type: :string, description: '<%= t(:page_num) %>', required: false
 <% if sortable_fields.present? -%>
       parameter name: :'sort', in: :query, type: :string, description: '<%= sortable_fields_desc %>', required: false
 <% end -%>
