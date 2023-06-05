@@ -82,7 +82,9 @@ module Jsonapi
     end
 
     def model_klass
-      file_name.camelize.safe_constantize
+      model_klass_const = file_name.camelize.safe_constantize
+      model_klass_const = resource_klass.model_hint.downcase.singularize.split('_').map(&:camelize).join("::").safe_constantize if model_klass_const.nil?
+      model_klass_const
     end
 
     def resource_klass
