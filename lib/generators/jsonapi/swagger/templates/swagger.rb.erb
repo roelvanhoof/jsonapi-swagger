@@ -6,7 +6,7 @@ RSpec.describe '<%= resouces_name %>', type: :request do
   <% if defined?(FactoryBot) -%>
     @<%= model_name %> = create :<%= model_name %>
   <% else -%>
-    @<%= model_name %> = <%= model_class_name %>.create
+    @<%= model_name %> = <%= model_name.camelize %>.create
   <% end -%>
   end
 
@@ -28,7 +28,7 @@ RSpec.describe '<%= resouces_name %>', type: :request do
 <% end -%>
       parameter name: :'fields[<%= route_resouces %>]', in: :query, type: :string, description: '<%= t(:display_field) %>', required: false
 <% relationships.each_value do |relation| -%>
-      parameter name: :'fields[<%= relation_table_name(relation) %>]', in: :query, type: :string, description: '<%= t(:display_field) %>', required: false
+      parameter name: :'fields[<%= relation.name %>]', in: :query, type: :string, description: '<%= t(:display_field) %>', required: false
 <% end -%>
       response '200', '<%= t(:get_list) %>' do
         schema type: :object,
